@@ -1,9 +1,11 @@
 # Assignment 1 - ReactJS app.
 
 Name: Yuzhe Shi
+
 Student ID: 20108862
 
 [a@shiyuzhe.com](mailto:a@shiyuzhe.com)
+
 [20108862@mail.wit.ie](mailto:20108862@mail.wit.ie)
 
 ## Overview.
