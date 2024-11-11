@@ -24,7 +24,16 @@ Student ID: 20108862
 
 ## Setup requirements.
 
-[ Outline any non-standard setup steps necessary to run your app locally after cloning the repo.]
+```bash
+# if you don't have pnpm installed, you can install it by running the following command.
+npm i -g pnpm
+
+# install dependencies
+pnpm install
+
+# start the app
+pnpm devW
+```
 
 ## API endpoints.
 
