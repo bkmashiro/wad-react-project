@@ -39,20 +39,24 @@ pnpm dev
 
 [ List the __additional__ TMDB endpoints used, giving the description and pathname for each one.]
 
-e.g.
+- Now Playing Movies - /movie/now_playing
+
+<!-- e.g.
 
 - Discover list of movies - discover/movie
 - Movie details - movie/:id
-- Movie genres = /genre/movie/list
+- Movie genres = /genre/movie/list -->
 
 ## Routing.
 
 [ List the __new routes__ supported by your app and state the associated page.]
 
-- /blogs - displays all published blogs.
+- /movies/nowplaying - Now Playing Movies
+
+<!-- - /blogs - displays all published blogs.
 - /blogs/:id - displays a particular blog.
 - /blogs/:id/comments - detail view of a particular blog and its comments.
-- etc.
+- etc. -->
 
 [If relevant, state what aspects of your app are protected (i.e. require authentication) and what is public.]
 
