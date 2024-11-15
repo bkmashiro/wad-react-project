@@ -12,6 +12,8 @@ import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage'
 import UpcomingMoviesPage from "./pages/UpcomingMoviesPage";
 import NowPlayingMoviesPage from "./pages/NowPlayingMoviesPage";
+import Error404 from "./pages/Error404";
+import Error400 from "./pages/Error400";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -37,7 +39,9 @@ const App = () => {
             <Route path="/reviews/:id" element={<MovieReviewPage />} />
             <Route path="/movies/:id" element={<MoviePage />} />
             <Route path="/" element={<HomePage />} />
-            <Route path="*" element={<Navigate to="/" />} />
+            {/* <Route path="*" element={<Navigate to="/" />} /> */}
+            <Route path="/err" element={<Error400 />} />
+            <Route path="*" element={<Error404 />} />
           </Routes>
         </MoviesContextProvider>
       </BrowserRouter>
