@@ -61,3 +61,19 @@ export const getMovieNowPlaying = async () => {
 export const getSimilarMovies = async (movieId) => {
   return await http.get(`/movie/${movieId}/similar`);
 }
+
+export const getPersonDetails = async (personId) => {
+  return await http.get(`/person/${personId}`);
+}
+
+export const getPersonImages = async (personId) => {
+  return await http.get(`/person/${personId}/images`);
+}
+
+export const getPersonMovieCredits = async (personId) => {
+  return await http.get(`/person/${personId}/movie_credits`);
+}
+
+export const getPersonTvCredits = async (personId) => {
+  return await http.get(`/person/${personId}/tv_credits`);
+}
