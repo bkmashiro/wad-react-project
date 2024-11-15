@@ -40,6 +40,7 @@ pnpm dev
 [ List the __additional__ TMDB endpoints used, giving the description and pathname for each one.]
 
 - Now Playing Movies - /movie/now_playing
+- Similar Movies - /movie/:id/similar
 
 <!-- e.g.
 

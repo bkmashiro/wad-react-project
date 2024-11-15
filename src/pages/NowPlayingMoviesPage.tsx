@@ -10,7 +10,10 @@ import AddToPlayList from "../components/cardIcons/playListAdd";
 
 const NowPlayingMoviesPage = () => {
   // Create an array of queries and run in parallel.
-  const upcomingMovieQueries = useQuery<any>("now-playing", getMovieNowPlaying);
+  const upcomingMovieQueries = useQuery<any>(
+    "now-playing",
+    getMovieNowPlaying
+  );
   // Check if any of the parallel queries is still loading.
   // const isLoading = upcomingMovieQueries.find((m) => m.isLoading === true);
   const isLoading = upcomingMovieQueries.isLoading;
@@ -18,8 +21,6 @@ const NowPlayingMoviesPage = () => {
   if (isLoading) {
     return <Spinner />;
   }
-
-  // console.log(upcomingMovieQueries.data);
 
   const movies = upcomingMovieQueries.data.results;
 
