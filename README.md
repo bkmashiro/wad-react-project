@@ -32,7 +32,7 @@ npm i -g pnpm
 pnpm install
 
 # start the app
-pnpm devW
+pnpm dev
 ```
 
 ## API endpoints.
