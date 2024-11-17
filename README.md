@@ -53,6 +53,9 @@ pnpm dev
 [ List the __new routes__ supported by your app and state the associated page.]
 
 - /movies/nowplaying - Now Playing Movies
+- /movies/:id/similar - Similar Movies
+- /movies/:id/recommendations - Recommendations
+- /movies/:id/credits - Credits
 
 <!-- - /blogs - displays all published blogs.
 - /blogs/:id - displays a particular blog.
@@ -68,3 +71,9 @@ i.e. aspects not covered in the lectures/labs. Include the source code filenames
 (we do not require code excerpts) and provide references to the online resources that helped you (articles/blogs). -->
 
 + Use `pnpm` as package manager.
+  - `pnpm-lock.yaml`
+  - ref: [pnpm](https://pnpm.io/)
++ Use TypeScript to enforce type checking.
+  - `tsconfig.json` and all `.ts | .tsx` files.
+  - ref: [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
+  - ref: [My blog post](https://blog.yuzhes.com/posts/typescript/easy-series.html)
