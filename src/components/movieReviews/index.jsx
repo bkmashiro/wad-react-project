@@ -15,7 +15,7 @@ import Spinner from "../spinner";
 export default function MovieReviews({ movie }) {
   const { data, error, isLoading, isError } = useQuery(
     ["reviews", { id: movie.id }],
-    getMovieReviews
+    ({ queryKey: [_, {id}] }) => getMovieReviews(id)
   );
 
   if (isLoading) {

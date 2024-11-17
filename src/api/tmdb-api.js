@@ -44,13 +44,11 @@ export const getGenres = () => {
   });
 };
 
-export const getMovieImages = ({ queryKey: [, idPart] }) => {
-  const { id } = idPart;
+export const getMovieImages = (id) => {
   return http.get(`/movie/${id}/images`);
 };
 
-export const getMovieReviews = ({ queryKey: [, idPart] }) => {
-  const { id } = idPart;
+export const getMovieReviews = (id) => {
   return http.get(`/movie/${id}/reviews`);
 };
 
@@ -76,4 +74,8 @@ export const getPersonMovieCredits = async (personId) => {
 
 export const getPersonTvCredits = async (personId) => {
   return await http.get(`/person/${personId}/tv_credits`);
+}
+
+export const getMovieRecommendations = async (movieId) => {
+  return await http.get(`/movie/${movieId}/recommendations`);
 }
