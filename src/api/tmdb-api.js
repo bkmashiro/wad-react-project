@@ -79,3 +79,7 @@ export const getPersonTvCredits = async (personId) => {
 export const getMovieRecommendations = async (movieId) => {
   return await http.get(`/movie/${movieId}/recommendations`);
 }
+
+export const getMovieCredits = async (movieId) => {
+  return await http.get(`/movie/${movieId}/credits`);
+}
