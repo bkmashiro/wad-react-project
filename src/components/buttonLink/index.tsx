@@ -2,13 +2,13 @@ import React from "react";
 import Chip from "@mui/material/Chip";
 
 interface ChipLinkProps {
-  text: string; // 显示的文本
-  link: string; // 跳转的链接
+  text: string;
+  link: string; 
 }
 
 const ChipLink: React.FC<ChipLinkProps> = ({ text, link }) => {
   const handleClick = () => {
-    window.location.href = link; // 跳转到指定链接
+    window.location.href = link;
   };
 
   return (
