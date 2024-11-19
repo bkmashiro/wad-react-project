@@ -84,6 +84,7 @@ i.e. aspects not covered in the lectures/labs. Include the source code filenames
 + Use TypeScript to enforce type checking.
   - `tsconfig.json` and all `.ts | .tsx` files.
   - ref: [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
-  - ref: [My blog post](https://blog.yuzhes.com/posts/typescript/easy-series.html)
+  - ref: [My blog post](https://blog.yuzhes.com/posts/typescript/easy-series.html) (I've been using TypeScript for years. Blog is originally Chinese but TypeScript related posts are mostly bilingual.)
 + Refactor the search using pipeline pattern, which allows us flexibly add more filters in the future.
   - `src/components/templateMovieListPage/index.tsx`
+  - This pattern is also used in movie sorting. `src/components/filterMoviesCard/index.jsx`
