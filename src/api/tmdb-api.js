@@ -22,8 +22,9 @@ export const getMovies = () => {
   });
 };
 
-export const getMovie = ({ queryKey: [, idPart] }) => {
+export const getMovie = async ({ queryKey: [, idPart] }) => {
   const { id } = idPart;
+
   return http.get(`/movie/${id}`);
 };
 

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import MovieDetails from "../components/movieDetails/";
 import PageTemplate from "../components/templateMoviePage";
 import useMovie from "../hooks/useMovie";
-import { getMovie } from "../api/tmdb-api";
+import { getMovie, getMovieCredits } from "../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
 
@@ -15,6 +15,10 @@ const MoviePage = (props) => {
     isLoading,
     isError,
   } = useQuery(["movie", { id: id }], getMovie);
+
+  const {
+    data: staffs,
+  } = useQuery(["movie-credits", { id: id }], ({ queryKey: [_, { id }] }) => getMovieCredits(id));
 
   if (isLoading) {
     return <Spinner />;
@@ -28,7 +32,7 @@ const MoviePage = (props) => {
       {movie ? (
         <>
           <PageTemplate movie={movie}>
-            <MovieDetails movie={movie} />
+            <MovieDetails movie={movie} staffs={staffs} />
           </PageTemplate>
         </>
       ) : (

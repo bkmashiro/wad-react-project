@@ -9,6 +9,7 @@ import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews";
+import ButtonLink from "../buttonLink";
 
 const root = {
   display: "flex",
@@ -20,7 +21,7 @@ const root = {
 };
 const chip = { margin: 0.5 };
 
-const MovieDetails = ({ movie }) => {
+const MovieDetails = ({ movie, staffs }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
@@ -52,7 +53,7 @@ const MovieDetails = ({ movie }) => {
         />
         <Chip
           icon={<StarRate />}
-          label={`${movie.vote_average} (${movie.vote_count}`}
+          label={`${movie.vote_average} (${movie.vote_count})`}
         />
         <Chip label={`Released: ${movie.release_date}`} />
       </Paper>
@@ -68,6 +69,32 @@ const MovieDetails = ({ movie }) => {
         ))}
       </Paper>
 
+      {staffs ? (
+        <Paper component="ul" sx={{ ...root }}>
+          <Chip label="Crew" sx={{ ...chip }} color="primary" />
+          {/* {JSON.stringify(staffs)} */}
+
+          {staffs?.crew.map((crew) => (
+            <li key={crew.id}>
+              <ButtonLink text={crew.name} link={`/person/${crew.id}`} />
+            </li>
+          ))}
+        </Paper>
+      ) : null}
+
+      {staffs ? (
+        <Paper component="ul" sx={{ ...root }}>
+          <Chip label="Cast" sx={{ ...chip }} color="primary" />
+          {/* {JSON.stringify(staffs)} */}
+
+          {staffs?.cast.map((crew) => (
+            <li key={crew.id}>
+              <ButtonLink text={crew.name} link={`/person/${crew.id}`} />
+            </li>
+          ))}
+        </Paper>
+      ) : null}
+
       <Fab
         color="secondary"
         variant="extended"
@@ -81,6 +108,7 @@ const MovieDetails = ({ movie }) => {
         <NavigationIcon />
         Reviews
       </Fab>
+
       <Drawer
         anchor="top"
         open={drawerOpen}
