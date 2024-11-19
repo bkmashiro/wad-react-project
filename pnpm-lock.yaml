@@ -32,9 +32,6 @@ importers:
       '@types/node':
         specifier: ^22.9.0
         version: 22.9.0
-      '@types/react':
-        specifier: ^18.3.12
-        version: 18.3.12
       '@types/react-dom':
         specifier: ^18.3.1
         version: 18.3.1
@@ -72,6 +69,9 @@ importers:
       '@babel/plugin-proposal-private-property-in-object':
         specifier: ^7.21.11
         version: 7.21.11(@babel/core@7.26.0)
+      '@types/react':
+        specifier: ^18.3.12
+        version: 18.3.12
 
 packages:
 

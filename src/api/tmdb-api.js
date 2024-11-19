@@ -11,13 +11,13 @@ http.interceptors.response.use((response) => {
   return response.data;
 });
 
-export const getMovies = () => {
+export const getMovies = (page = 1) => {
   return http.get(`/discover/movie`, {
     params: {
       language: "en-US",
       include_adult: false,
       include_video: false,
-      page: 1,
+      page,
     },
   });
 };

@@ -29,7 +29,7 @@ function MovieListPageTemplate({ movies, title, action }) {
 
   const handleSorterChange = (name, sorter) => {
     setSortBy((prev) => ({ ...prev, [name]: sorter }));
-  }
+  };
 
   const displayedMovies = movies.filter((m) => {
     // console.log(filters);
@@ -51,7 +51,7 @@ function MovieListPageTemplate({ movies, title, action }) {
         continue;
       }
 
-      const result = sortBy[sortKeys[i]](a, b); 
+      const result = sortBy[sortKeys[i]](a, b);
       // Not exaclty correct, if it has multiple sorters, it's not a partial order,
       // there is no way we can compare
       // so we just assume the priority is from left to right
