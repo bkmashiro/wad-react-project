@@ -7,24 +7,13 @@ import Grid from "@mui/material/Grid2";
 type Filter = (movie: any) => boolean;
 
 function MovieListPageTemplate({ movies, title, action }) {
-  // const [nameFilter, setNameFilter] = useState("");
-  // const [genreFilter, setGenreFilter] = useState("0");
-  // const [starFilter, setStarFilter] = useState(0);
-  // const [dateFilter, setDateFilter] = useState("");
-
   const [filters, setFilters] = useState<{
     [key: string]: Filter;
   }>({});
 
-  // const genreId = Number(genreFilter);
-
-  // let displayedMovies = movies
-  //   .filter((m) => {
-  //     return m.title.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
-  //   })
-  //   .filter((m) => {
-  //     return genreId > 0 ? m.genre_ids.includes(genreId) : true;
-  //   });
+  const [sortBy, setSortBy] = useState<{
+    [key: string]: (a: any, b: any) => number;
+  }>({}); // State to store the sorting function
 
   const handleFiltersChange = (name, filter) => {
     setFilters((prev) => ({ ...prev, [name]: filter }));
@@ -38,8 +27,12 @@ function MovieListPageTemplate({ movies, title, action }) {
     });
   };
 
+  const handleSorterChange = (name, sorter) => {
+    setSortBy((prev) => ({ ...prev, [name]: sorter }));
+  }
+
   const displayedMovies = movies.filter((m) => {
-    console.log(filters);
+    // console.log(filters);
     const filterKeys = Object.keys(filters);
     return filterKeys.every((key) => {
       if (!filters[key]) {
@@ -47,6 +40,26 @@ function MovieListPageTemplate({ movies, title, action }) {
       }
       return filters[key](m);
     });
+  });
+
+  // multiple sorters
+  const sortedMovies = displayedMovies.sort((a, b) => {
+    const sortKeys = Object.keys(sortBy);
+    for (let i = 0; i < sortKeys.length; i++) {
+      // if is null, then we skip
+      if (!sortBy[sortKeys[i]]) {
+        continue;
+      }
+
+      const result = sortBy[sortKeys[i]](a, b); 
+      // Not exaclty correct, if it has multiple sorters, it's not a partial order,
+      // there is no way we can compare
+      // so we just assume the priority is from left to right
+      if (result !== 0) {
+        return result;
+      }
+    }
+    return 0;
   });
 
   return (
@@ -63,9 +76,10 @@ function MovieListPageTemplate({ movies, title, action }) {
           <FilterCard
             onFilterChange={handleFiltersChange}
             onFilterRemoved={handleRemoveFilter}
+            onSorterChange={handleSorterChange}
           />
         </Grid>
-        <MovieList action={action} movies={displayedMovies}></MovieList>
+        <MovieList action={action} movies={sortedMovies}></MovieList>
       </Grid>
     </Grid>
   );

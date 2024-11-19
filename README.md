@@ -85,3 +85,5 @@ i.e. aspects not covered in the lectures/labs. Include the source code filenames
   - `tsconfig.json` and all `.ts | .tsx` files.
   - ref: [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
   - ref: [My blog post](https://blog.yuzhes.com/posts/typescript/easy-series.html)
++ Refactor the search using pipeline pattern, which allows us flexibly add more filters in the future.
+  - `src/components/templateMovieListPage/index.tsx`

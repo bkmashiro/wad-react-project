@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
@@ -9,11 +9,12 @@ import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import Slider from "@mui/material/Slider";
+import Button from "@mui/material/Button";
 import img from "../../images/pexels-dziana-hasanbekava-5480827.jpg";
 import { getGenres } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from "../spinner";
-import Slider from "@mui/material/Slider";
 
 const formControl = {
   margin: 1,
@@ -23,7 +24,11 @@ const formControl = {
 
 export default function FilterMoviesCard(props) {
   const { data, error, isLoading, isError } = useQuery("genres", getGenres);
-  const { onFilterChange, onFilterRemoved } = props;
+  const { onFilterChange, onFilterRemoved, onSorterChange } = props;
+
+  const [ratingSortOrder, setRatingSortOrder] = useState(0); // 0: no sort, 1: ascending, -1: descending
+  const [dateSortOrder, setDateSortOrder] = useState(0);
+
   if (isLoading) {
     return <Spinner />;
   }
@@ -31,6 +36,7 @@ export default function FilterMoviesCard(props) {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
+
   const genres = data.genres;
   if (genres[0].name !== "All") {
     genres.unshift({ id: "0", name: "All" });
@@ -38,7 +44,22 @@ export default function FilterMoviesCard(props) {
 
   const handleFilterChange = (e, name, filter) => {
     e.preventDefault();
-    onFilterChange(name, filter); // NEW
+    onFilterChange(name, filter);
+  };
+
+  const toggleSortOrder = (name, currentOrder, setOrder, sorter) => {
+    // 0 -> 1 -> -1 -> 0
+    const nextOrder = currentOrder === 0 ? 1 : currentOrder === 1 ? -1 : 0;
+
+    setOrder(nextOrder);
+
+    if (nextOrder === 1) {
+      onSorterChange(name,sorter); // Ascending
+    } else if (nextOrder === -1) {
+      onSorterChange(name,(a, b) => -sorter(a, b)); // Descending
+    } else {
+      onSorterChange(name, null); // No sorting
+    }
   };
 
   return (
@@ -71,7 +92,6 @@ export default function FilterMoviesCard(props) {
           <button
             onClick={() => {
               onFilterRemoved("search-text");
-
               document.getElementById("filled-search").value = "";
             }}
           >
@@ -96,13 +116,11 @@ export default function FilterMoviesCard(props) {
               })
             }
           >
-            {genres.map((genre) => {
-              return (
-                <MenuItem key={genre.id} value={genre.id}>
-                  {genre.name}
-                </MenuItem>
-              );
-            })}
+            {genres.map((genre) => (
+              <MenuItem key={genre.id} value={genre.id}>
+                {genre.name}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
 
@@ -142,6 +160,46 @@ export default function FilterMoviesCard(props) {
             }
           />
         </FormControl>
+
+        {/* Sort by Rating */}
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() =>
+            toggleSortOrder(
+              "rating",
+              ratingSortOrder,
+              setRatingSortOrder,
+              (a, b) => a.vote_average - b.vote_average
+            )
+          }
+        >
+          Sort by Rating (
+          {ratingSortOrder === 1
+            ? "Asc"
+            : ratingSortOrder === -1
+            ? "Desc"
+            : "None"}
+          )
+        </Button>
+
+        {/* Sort by Release Date */}
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={() =>
+            toggleSortOrder(
+              "date",
+              dateSortOrder,
+              setDateSortOrder,
+              (a, b) => new Date(a.release_date) - new Date(b.release_date)
+            )
+          }
+        >
+          Sort by Date (
+          {dateSortOrder === 1 ? "Asc" : dateSortOrder === -1 ? "Desc" : "None"}
+          )
+        </Button>
       </CardContent>
       <CardMedia sx={{ height: 300 }} image={img} title="Filter" />
       <CardContent>
