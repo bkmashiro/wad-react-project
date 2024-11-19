@@ -41,7 +41,13 @@ pnpm dev
 
 - Now Playing Movies - /movie/now_playing
 - Similar Movies - /movie/:id/similar
-
+- movie credits - /movie/:id/credits
+- person credits - /person/:id/credits
+- person details - /person/:id
+- person images - /person/:id/images
+- person tv credits - /person/:id/credits
+- recommendations - /movie/:id/recommendations
+- credits - /movie/:id/credits
 <!-- e.g.
 
 - Discover list of movies - discover/movie
@@ -56,6 +62,7 @@ pnpm dev
 - /movies/:id/similar - Similar Movies
 - /movies/:id/recommendations - Recommendations
 - /movies/:id/credits - Credits
+- /person/:id - Person Details
 
 <!-- - /blogs - displays all published blogs.
 - /blogs/:id - displays a particular blog.
