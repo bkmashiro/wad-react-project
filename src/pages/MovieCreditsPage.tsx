@@ -35,7 +35,7 @@ type MovieCredits = {
 };
 
 const MovieCreditsPage = () => {
-  const mid = useParams().id;
+  const id = useParams().id;
 
   const {
     data: movie,
@@ -43,7 +43,7 @@ const MovieCreditsPage = () => {
     isLoading,
     isError,
   } = useQuery<any, any, MovieCredits, any>(
-    ["movie-credits", { id: mid }],
+    ["movie-credits", { id }],
     ({ queryKey: [_, { id }] }) => getMovieCredits(id)
   );
 

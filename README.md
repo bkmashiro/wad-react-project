@@ -63,7 +63,8 @@ pnpm dev
 - /movies/:id/recommendations - Recommendations
 - /movies/:id/credits - Credits
 - /person/:id - Person Details
-
+- /error - Error Page
+- /* - 404 Page fallback
 <!-- - /blogs - displays all published blogs.
 - /blogs/:id - displays a particular blog.
 - /blogs/:id/comments - detail view of a particular blog and its comments.

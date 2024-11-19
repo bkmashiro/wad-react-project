@@ -13,6 +13,7 @@ import img from "../../images/pexels-dziana-hasanbekava-5480827.jpg";
 import { getGenres } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from "../spinner";
+import Slider from "@mui/material/Slider";
 
 const formControl = {
   margin: 1,
@@ -22,7 +23,7 @@ const formControl = {
 
 export default function FilterMoviesCard(props) {
   const { data, error, isLoading, isError } = useQuery("genres", getGenres);
-
+  const { onFilterChange, onFilterRemoved } = props;
   if (isLoading) {
     return <Spinner />;
   }
@@ -35,17 +36,9 @@ export default function FilterMoviesCard(props) {
     genres.unshift({ id: "0", name: "All" });
   }
 
-  const handleChange = (e, type, value) => {
+  const handleFilterChange = (e, name, filter) => {
     e.preventDefault();
-    props.onUserInput(type, value); // NEW
-  };
-
-  const handleTextChange = (e, props) => {
-    handleChange(e, "name", e.target.value);
-  };
-
-  const handleGenreChange = (e) => {
-    handleChange(e, "genre", e.target.value);
+    onFilterChange(name, filter); // NEW
   };
 
   return (
@@ -60,15 +53,32 @@ export default function FilterMoviesCard(props) {
           <SearchIcon fontSize="large" />
           Filter the movies.
         </Typography>
-        <TextField
-          sx={{ ...formControl }}
-          id="filled-search"
-          label="Search field"
-          type="search"
-          variant="filled"
-          value={props.titleFilter}
-          onChange={handleTextChange}
-        />
+        <div>
+          <TextField
+            sx={{ ...formControl }}
+            id="filled-search"
+            label="Search field"
+            type="search"
+            variant="filled"
+            value={props.titleFilter}
+            onChange={(e) =>
+              handleFilterChange(e, "search-text", (movie) =>
+                movie.title.toLowerCase().includes(e.target.value.toLowerCase())
+              )
+            }
+          />
+
+          <button
+            onClick={() => {
+              onFilterRemoved("search-text");
+
+              document.getElementById("filled-search").value = "";
+            }}
+          >
+            Clear Search
+          </button>
+        </div>
+
         <FormControl sx={{ ...formControl }}>
           <InputLabel id="genre-label">Genre</InputLabel>
           <Select
@@ -76,7 +86,15 @@ export default function FilterMoviesCard(props) {
             id="genre-select"
             defaultValue=""
             value={props.genreFilter}
-            onChange={handleGenreChange}
+            onChange={(e) =>
+              handleFilterChange(e, "genre", (movie) => {
+                if (e.target.value === "0") {
+                  return true;
+                } else {
+                  return movie.genre_ids.includes(Number(e.target.value));
+                }
+              })
+            }
           >
             {genres.map((genre) => {
               return (
@@ -86,6 +104,43 @@ export default function FilterMoviesCard(props) {
               );
             })}
           </Select>
+        </FormControl>
+
+        {/* Rating Filter */}
+        <FormControl sx={{ ...formControl }}>
+          <Typography>Rating (Min):</Typography>
+          <Slider
+            defaultValue={0}
+            step={1}
+            marks
+            min={0}
+            max={10}
+            valueLabelDisplay="auto"
+            onChange={(e, value) =>
+              handleFilterChange(
+                e,
+                "rating",
+                (movie) => movie.vote_average >= value
+              )
+            }
+          />
+        </FormControl>
+
+        {/* Date Filter */}
+        <FormControl sx={{ ...formControl }}>
+          <Typography>Release Date After:</Typography>
+          <TextField
+            id="date-after"
+            type="date"
+            onChange={(e) =>
+              handleFilterChange(
+                e,
+                "date-after",
+                (movie) =>
+                  new Date(movie.release_date) >= new Date(e.target.value)
+              )
+            }
+          />
         </FormControl>
       </CardContent>
       <CardMedia sx={{ height: 300 }} image={img} title="Filter" />
