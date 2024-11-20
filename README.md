@@ -18,6 +18,8 @@ Student ID: 20108862
 
 - Movie Details Page
   - Show links to staff details page.
+- Pagination
+  - Home page supports pagination.
 - Person Details Page
   - Show person details.
 - Search
