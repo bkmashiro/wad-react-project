@@ -8,7 +8,7 @@ import { getAuth } from "firebase/auth";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBcFb-7WMKTTFT_B_FXOnPXTHsRO6GGKCE",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "wad-auth.firebaseapp.com",
   projectId: "wad-auth",
   storageBucket: "wad-auth.firebasestorage.app",
@@ -16,6 +16,7 @@ const firebaseConfig = {
   appId: "1:53400502777:web:ee55368a6ccd42adb1fd28",
   measurementId: "G-VYHH7TTMLJ",
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
