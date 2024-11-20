@@ -28,8 +28,20 @@ Student ID: 20108862
   - Show error message.
 - 404 Page
   - Show 404 message.
+- Login/Logout
+  - based on firebase.
+  - Example User:
+    - email: `a@yuzhes.com`
+    - password: `P@ssw0rd`
 - Now Playing Movies
   - Show now playing movies.
+- Continious Deployment
+  - Deployed to Vercel. 
+  - [wad-movie-demo.yuzhes.com](https://wad-movie-demo.yuzhes.com/)
+  - [wad-react-project.vercel.app](https://wad-react-project.vercel.app/) (same as above)
+- CDN
+  - Accelerated by Cloudflare.
+
 
 ## Setup requirements.
 
