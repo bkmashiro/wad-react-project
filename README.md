@@ -6,15 +6,19 @@ Student ID: 20108862
 
 [a@shiyuzhe.com](mailto:a@shiyuzhe.com)
 
+[wsdapp@yuzhes.com](mailto:wsdapp@yuzhes.com)
+
 [20108862@mail.wit.ie](mailto:20108862@mail.wit.ie)
 
 ## Overview.
 
-[A brief statement on the content of this repository.]
+<!-- [A brief statement on the content of this repository.] -->
+
+This is a ReactJS app that uses The Movie Database (TMDb) API to display movie information. It supports features like movie details, pagination, person details, advanced search(filtering & sorting), error page, 404 page, login/logout, now playing movies, continuous deployment, and CDN.
 
 ### Features.
 
-[ A bullet-point list of the __new features__ you added to the Movies Fan app (and any modifications to existing features) .]
+<!-- [ A bullet-point list of the __new features__ you added to the Movies Fan app (and any modifications to existing features) .] -->
 
 - Movie Details Page
   - Show links to staff details page.
@@ -38,12 +42,11 @@ Student ID: 20108862
 - Now Playing Movies
   - Show now playing movies.
 - Continious Deployment
-  - Deployed to Vercel. 
+  - Deployed to Vercel.
   - [wad-movie-demo.yuzhes.com](https://wad-movie-demo.yuzhes.com/)
   - [wad-react-project.vercel.app](https://wad-react-project.vercel.app/) (same as above)
 - CDN
   - Accelerated by Cloudflare.
-
 
 ## Setup requirements.
 
@@ -60,7 +63,7 @@ pnpm dev
 
 ## API endpoints.
 
-[ List the __additional__ TMDB endpoints used, giving the description and pathname for each one.]
+<!-- [ List the __additional__ TMDB endpoints used, giving the description and pathname for each one.] -->
 
 - Now Playing Movies - /movie/now_playing
 - Similar Movies - /movie/:id/similar
@@ -72,6 +75,7 @@ pnpm dev
 - recommendations - /movie/:id/recommendations
 - credits - /movie/:id/credits
 <!-- e.g.
+
 
 - Discover list of movies - discover/movie
 - Movie details - movie/:id
@@ -86,7 +90,7 @@ pnpm dev
 - /movies/:id/credits - Credits
 - /person/:id - Person Details
 - /error - Error Page
-- /* - 404 Page fallback
+- /\* - 404 Page fallback
 - /login - Login Page
 - /logout - Logout
 <!-- - /blogs - displays all published blogs.
@@ -102,21 +106,21 @@ pnpm dev
 i.e. aspects not covered in the lectures/labs. Include the source code filenames that illustrate these
 (we do not require code excerpts) and provide references to the online resources that helped you (articles/blogs). -->
 
-+ Use `pnpm` as package manager.
+- Use `pnpm` as package manager.
   - `pnpm-lock.yaml`
   - ref: [pnpm](https://pnpm.io/)
-+ Use TypeScript to enforce type checking.
+- Use TypeScript to enforce type checking.
   - `tsconfig.json` and all `.ts | .tsx` files.
   - ref: [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
   - ref: [My blog post](https://blog.yuzhes.com/posts/typescript/easy-series.html) (I've been using TypeScript for years. Blog is originally Chinese but TypeScript related posts are mostly bilingual.)
-+ Refactor the search using pipeline pattern, which allows us flexibly add more filters in the future.
+- Refactor the search using pipeline pattern, which allows us flexibly add more filters in the future.
   - `src/components/templateMovieListPage/index.tsx`
   - This pattern is also used in movie sorting. `src/components/filterMoviesCard/index.jsx`
-+ Use firebase for authentication.
+- Use firebase for authentication.
   - `src/pages/loginPage.tsx`
   - `src/pages/logoutPage.tsx`
   - ref: [Firebase](https://firebase.google.com/)
-+ Use Vercel for continuous deployment.
+- Use Vercel for continuous deployment.
   - ref: [Vercel](https://vercel.com/)
-+ Use Cloudflare for CDN.
+- Use Cloudflare for CDN.
   - ref: [Cloudflare](https://www.cloudflare.com/)
