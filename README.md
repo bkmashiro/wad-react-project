@@ -82,12 +82,13 @@ pnpm dev
 [ List the __new routes__ supported by your app and state the associated page.]
 
 - /movies/nowplaying - Now Playing Movies
-- /movies/:id/similar - Similar Movies
 - /movies/:id/recommendations - Recommendations
 - /movies/:id/credits - Credits
 - /person/:id - Person Details
 - /error - Error Page
 - /* - 404 Page fallback
+- /login - Login Page
+- /logout - Logout
 <!-- - /blogs - displays all published blogs.
 - /blogs/:id - displays a particular blog.
 - /blogs/:id/comments - detail view of a particular blog and its comments.
@@ -111,3 +112,11 @@ i.e. aspects not covered in the lectures/labs. Include the source code filenames
 + Refactor the search using pipeline pattern, which allows us flexibly add more filters in the future.
   - `src/components/templateMovieListPage/index.tsx`
   - This pattern is also used in movie sorting. `src/components/filterMoviesCard/index.jsx`
++ Use firebase for authentication.
+  - `src/pages/loginPage.tsx`
+  - `src/pages/logoutPage.tsx`
+  - ref: [Firebase](https://firebase.google.com/)
++ Use Vercel for continuous deployment.
+  - ref: [Vercel](https://vercel.com/)
++ Use Cloudflare for CDN.
+  - ref: [Cloudflare](https://www.cloudflare.com/)
