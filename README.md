@@ -16,11 +16,20 @@ Student ID: 20108862
 
 [ A bullet-point list of the __new features__ you added to the Movies Fan app (and any modifications to existing features) .]
 
-- Feature 1
-- Feature 2
-- Feature 3
-- etc
-- etc
+- Movie Details Page
+  - Show links to staff details page.
+- Person Details Page
+  - Show person details.
+- Search
+  - allow search by date and rating.
+  - allow sort by date and rating.
+  - support multiple filters and sorting using pipeline pattern.
+- Error Page
+  - Show error message.
+- 404 Page
+  - Show 404 message.
+- Now Playing Movies
+  - Show now playing movies.
 
 ## Setup requirements.
 
