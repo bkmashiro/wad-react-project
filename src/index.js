@@ -18,6 +18,9 @@ import MovieCreditsPage from "./pages/MovieCreditsPage";
 import MovieRecommendationsPage from "./pages/MovieRecommendationPage";
 import PersonDetailPage from "./pages/PersonDetailPage";
 import PaginationContextProvider from "./contexts/paginationContext";
+import LoginPage from "./pages/LoginPage";
+import LogoutPage from "./pages/LogoutPage";
+import UserContextProvider from "./contexts/userContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -32,28 +35,32 @@ const queryClient = new QueryClient({
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <SiteHeader />
-        <PaginationContextProvider>
-          <MoviesContextProvider>
-            <Routes>
-              <Route path="/reviews/form" element={<AddMovieReviewPage />} />
-              <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
-              <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
-              <Route path="/movies/nowplaying" element={<NowPlayingMoviesPage />} />
-              <Route path="/reviews/:id" element={<MovieReviewPage />} />
-              <Route path="/movies/:id/credits" element={<MovieCreditsPage />} />
-              <Route path="/movies/:id/recommendations" element={<MovieRecommendationsPage />} />
-              <Route path="/movies/:id" element={<MoviePage />} />
-              <Route path="/person/:id" element={<PersonDetailPage />} />
-              <Route path="/" element={<HomePage />} />
-              {/* <Route path="*" element={<Navigate to="/" />} /> */}
-              <Route path="/err" element={<Error400 />} />
-              <Route path="*" element={<Error404 />} />
-            </Routes>
-          </MoviesContextProvider>
-        </PaginationContextProvider>
-      </BrowserRouter>
+      <UserContextProvider>
+        <BrowserRouter>
+          <SiteHeader />
+          <PaginationContextProvider>
+            <MoviesContextProvider>
+              <Routes>
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/logout" element={<LogoutPage />} />
+                <Route path="/reviews/form" element={<AddMovieReviewPage />} />
+                <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
+                <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
+                <Route path="/movies/nowplaying" element={<NowPlayingMoviesPage />} />
+                <Route path="/reviews/:id" element={<MovieReviewPage />} />
+                <Route path="/movies/:id/credits" element={<MovieCreditsPage />} />
+                <Route path="/movies/:id/recommendations" element={<MovieRecommendationsPage />} />
+                <Route path="/movies/:id" element={<MoviePage />} />
+                <Route path="/person/:id" element={<PersonDetailPage />} />
+                <Route path="/" element={<HomePage />} />
+                {/* <Route path="*" element={<Navigate to="/" />} /> */}
+                <Route path="/err" element={<Error400 />} />
+                <Route path="*" element={<Error404 />} />
+              </Routes>
+            </MoviesContextProvider>
+          </PaginationContextProvider>
+        </BrowserRouter>
+      </UserContextProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );

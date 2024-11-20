@@ -11,6 +11,8 @@ import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/userContext";
 
 const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
 
@@ -23,12 +25,19 @@ const SiteHeader = ({ history }) => {
 
   const navigate = useNavigate();
 
+  const { currentUser } = useContext(UserContext);
   const menuOptions = [
     { label: "Home", path: "/" },
     { label: "Favorites", path: "/movies/favorites" },
     { label: "Upcoming", path: "/movies/upcoming" },
     { label: "Now Playing", path: "/movies/nowplaying" },
   ];
+
+  if (currentUser) {
+    menuOptions.push({ label: "Logout", path: "/logout" });
+  } else {
+    menuOptions.push({ label: "Login", path: "/login" });
+  }
 
   const handleMenuSelect = (pageURL) => {
     navigate(pageURL, { replace: true });
@@ -46,7 +55,7 @@ const SiteHeader = ({ history }) => {
             TMDB Client
           </Typography>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            All you ever wanted to know about Movies!
+            Logged in as: {currentUser ? currentUser.user.email : "Guest"}
           </Typography>
           {isMobile ? (
             <>
