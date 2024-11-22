@@ -95,7 +95,7 @@ pnpm dev
 - /\* - 404 Page fallback
 - /login - Login Page
 - /logout - Logout
-- profile - /profile (this is a protected endpoint)
+- /profile - /profile (this is a protected endpoint)
 <!-- - /blogs - displays all published blogs.
 - /blogs/:id - displays a particular blog.
 - /blogs/:id/comments - detail view of a particular blog and its comments.
