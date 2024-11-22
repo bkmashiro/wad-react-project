@@ -21,6 +21,7 @@ import PaginationContextProvider from "./contexts/paginationContext";
 import LoginPage from "./pages/LoginPage";
 import LogoutPage from "./pages/LogoutPage";
 import UserContextProvider from "./contexts/userContext";
+import ProfilePage from "./pages/ProfilePage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -41,6 +42,8 @@ const App = () => {
           <PaginationContextProvider>
             <MoviesContextProvider>
               <Routes>
+                <Route path="/profile" element={<ProfilePage />} />
+
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/logout" element={<LogoutPage />} />
                 <Route path="/reviews/form" element={<AddMovieReviewPage />} />

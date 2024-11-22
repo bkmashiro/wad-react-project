@@ -7,6 +7,7 @@ import {
 } from "firebase/auth";
 import { TextField, Button, Box, Typography } from "@mui/material";
 import { UserContext } from "../contexts/userContext";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -15,6 +16,7 @@ const LoginPage = () => {
   const [error, setError] = useState("");
   const { setCurrentUser } = useContext(UserContext);
 
+  const navigate = useNavigate();
   const handleSubmit = async () => {
     setError("");
     try {
@@ -29,8 +31,10 @@ const LoginPage = () => {
         );
 
         setCurrentUser(credential);
-        
+
         alert("Logged in successfully!");
+
+        navigate("/");
       }
     } catch (err) {
       setError((err as any).message);

@@ -35,6 +35,7 @@ const SiteHeader = ({ history }) => {
 
   if (currentUser) {
     menuOptions.push({ label: "Logout", path: "/logout" });
+    menuOptions.push({ label: "Profile", path: "/profile" });
   } else {
     menuOptions.push({ label: "Login", path: "/login" });
   }

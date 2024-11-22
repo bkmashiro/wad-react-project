@@ -39,6 +39,8 @@ This is a ReactJS app that uses The Movie Database (TMDb) API to display movie i
   - Example User:
     - email: `a@yuzhes.com`
     - password: `P@ssw0rd`
+- Profle
+  - Show user's details.
 - Now Playing Movies
   - Show now playing movies.
 - Continious Deployment
@@ -93,6 +95,7 @@ pnpm dev
 - /\* - 404 Page fallback
 - /login - Login Page
 - /logout - Logout
+- profile - /profile (this is a protected endpoint)
 <!-- - /blogs - displays all published blogs.
 - /blogs/:id - displays a particular blog.
 - /blogs/:id/comments - detail view of a particular blog and its comments.
