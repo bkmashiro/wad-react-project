@@ -88,7 +88,7 @@ pnpm dev
 [ List the __new routes__ supported by your app and state the associated page.]
 
 - /movies/nowplaying - Now Playing Movies
-- /movies/:id/recommendations - Recommendations
+<!-- - /movies/:id/recommendations - Recommendations -->
 - /movies/:id/credits - Credits
 - /person/:id - Person Details
 - /error - Error Page
